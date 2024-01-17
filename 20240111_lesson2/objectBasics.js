@@ -33,9 +33,9 @@
 
 /* exercise 1 */
 let belgium = {
-    country: "Belgium",
+    country: "Belgium", //property with value in string(also an object)
     capital: "Brussels",
-    languages: ["Dutch", "French", "German"],
+    languages: ["Dutch", "French", "German"],//property with value in array(also an object)
     area: 30689,
     population: 11492641,
     gdpPerCapita: 50114,
@@ -132,11 +132,11 @@ function printCountryWithMaximumPopulation(arrayOfCountries){
         let currentCountry = arrayOfCountries[i];
         if (currentCountry.population > countryWithMaximumPopulation.population){
             countryWithMaximumPopulation = currentCountry;
-             
         }
     }
     console.log("Country with highest population is " + countryWithMaximumPopulation.country + "\n");
 }
+//method object
 
 let arrayOneOfCountries = [belgium, germany, france, china, sweden];
 printCountryWithMaximumPopulation(arrayOneOfCountries);
