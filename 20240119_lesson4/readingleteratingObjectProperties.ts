@@ -1,3 +1,4 @@
+//an example of object of a car
 let car = {
    make: "Hondar",
    model: "Accord",
@@ -8,17 +9,21 @@ let car = {
    mileage: 1234,
 }
 
-
-let variableName = "numberOfDoors";
+let variableName = "model";
+let variableName2 = "year"
 
 console.log(car.model);
+console.log(car["model"]); //this kind of syntax is more beneficial because 
 console.log(car[variableName]);
+console.log(car[variableName2]);
+
 
 //loop over the object and print out all the properties
 for (let property in car) {
-    console.log(property);
-    console.log(car[property]);
+     console.log(property);  //excute the names of the properties, not values
+     console.log(car[property]); // //excute the values of the properties
 }
+
 car.classification = "sedan";
 
 console.log(car);

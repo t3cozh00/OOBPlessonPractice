@@ -5,6 +5,16 @@ function sum(a: number,b: number): number{
     return a + b;
 }
 
+let hello = [1, 2, 3, 4, 5];
+let nihao = ["Hello", "World"];
+
+function getSecondElement (array : number[]) : number {
+    return array[1];
+} 
+console.log(getSecondElement(hello));
+//console.log(getSecondElement(nihao));
+
+
 // exercise 2
 interface Country {
     country: string;
@@ -25,6 +35,14 @@ const belgium = {
     gdpPerCapita: 50114,
     iSO3166Code: "BE",   
 }
+
+function printCountryandPop(country : Country) : void{
+    console.log(country.country + ", population " + country.population);
+}
+printCountryandPop(belgium);
+
+
+
 
 let china = {
     country: "China",
@@ -62,50 +80,24 @@ let china = {
 // }
 
 
-function printCountryandPop (country: Country): void{
-    console.log(country.country + ", population " + country.population)
-}
 
 // exercise 3
 
-
-// function printCountryWithMaximumPopulation(arrayOfCountries){
-    
-//     for (let i= 0; i < arrayOfCountries.length; i++){
-//         let currentCountry = arrayOfCountries[i];
-//         console.log(currentCountry.country);
-//     }
-// }
-// let arrayOneOfCountries = [belgium, germany, france, china, sweden];
-// printCountryWithMaximumPopulation(arrayOneOfCountries);
-
-
-
-// function printCountryWithMaximumPopulation(arrayOfCountries){
-//     let countryWithMaximumPopulation = arrayOfCountries[0];
-//     for (let i= 0; i < arrayOfCountries.length; i++){
-//         let currentCountry = arrayOfCountries[i];
-//         if (currentCountry.population > countryWithMaximumPopulation.population){
-//             countryWithMaximumPopulation = currentCountry;
-//         }
-//     }
-//     console.log("Country with highest population is " + countryWithMaximumPopulation.country + "\n");
-// }
-//method object
-
-let arrayOneOfCountries : Country[] = [belgium, china];
-printCountryWithMaximumPopulation(arrayOneOfCountries);
-
-
-function printCountryWithMaximumPopulation(arrayOfCountries:Country[]) : Country {
+let arrayOneOfCountries = [belgium, china];
+function printCountryWithMaximumPopulation(arrayOfCountries : Country[]) : Country{
     let countryWithMaximumPopulation : Country = arrayOfCountries[0];
 
-    for (let i= 0; i < arrayOfCountries.length; i++){
+    for (let i = 0; i < arrayOfCountries.length; i++){
         let currentCountry = arrayOfCountries[i];
+
         if (currentCountry.population > countryWithMaximumPopulation.population){
             countryWithMaximumPopulation = currentCountry;
         }
     }
-    console.log("Country with highest population is " + countryWithMaximumPopulation.country + "\n");
+    
+    console.log("Country with highest population is " + countryWithMaximumPopulation.country + ". \n");
+    
     return countryWithMaximumPopulation;
 }
+printCountryWithMaximumPopulation(arrayOneOfCountries);
+
