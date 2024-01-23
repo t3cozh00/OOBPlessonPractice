@@ -9,6 +9,13 @@ function Car(make, model, year, color){
     this.color = color;
     this.numberwheels = 4;
     this.isRunning = false;
+    //or
+    //function Car(a, b, c, d){
+        //this.make = a;
+        //this.model = b;
+        //this.year = c;
+        //this.color = d
+    //};
     
     this.turnOn = function(){
     //add method to the constructor function, a method is a function, which is a party of an object, it has direct access to the object properties
