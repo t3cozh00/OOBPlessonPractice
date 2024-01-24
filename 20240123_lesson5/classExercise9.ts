@@ -1,4 +1,4 @@
-function Student (name, countryCode){
+function StudentOne (name, countryCode){
 
     this.name = name;
     this.birthplace = countryCode;
@@ -16,16 +16,16 @@ function Student (name, countryCode){
 }
 
 
-let student1 = new Student("Cong", "CN");
-let student2 = new Student("Ha", "US");
-let student3 = new Student("Uo", "FI");
+let student1 = new StudentOne("Cong", "CN");
+let student2 = new StudentOne("Ha", "US");
+let student3 = new StudentOne("Uo", "FI");
 
 console.log(student1);
 console.log(student2);
 console.log(student3);
 
 
-function Teacher (name, countryCode){
+function TeacherOne (name, countryCode){
 
     this.name = name;
     this.birthplace = countryCode;
@@ -40,22 +40,26 @@ function Teacher (name, countryCode){
 }
 
 
-let teacher1 = new Teacher("Tyi", "CN");
+let teacher1 = new TeacherOne("Tyi", "CN");
+
 console.log(teacher1);
 
 teacher1.addTeachingTopic()
-student1.setTutor(teacher1)
+teacher1.addTeachingTopic("Python");
+
+student1.setTutor(teacher1);
+
+teacher1.addTeachingTopic("JavaScript");
 console.log(student1);
 
 
-teacher1.name = "Some other name"
-console.log(student1);
-// teacher1.addTeachingTopic("Python");
-// teacher1.addTeachingTopic("JavaScript");
+//teacher1.name = "Some other name"
+//console.log(student1);
 
 
-let teacher2 = new Student("Ha", "US");
-let teacher3 = new Student("Uo", "FI");
+
+let teacher2 = new StudentOne("Ha", "US");
+let teacher3 = new StudentOne("Uo", "FI");
 
 
 
