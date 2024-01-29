@@ -35,11 +35,7 @@ class Food {
         return this.#name;
     }
 
-    decreaseAmount(){
-        if(this.#remaining > 0){
-            this.#remaining -= 1;
-        }
-    }
+    
 }
 
 class Refrigerator{
@@ -60,14 +56,10 @@ class Refrigerator{
         // 1. find food which has the same name as nameOfFood from our storage
         // ⚠️ the idea of the loop: this variable is initialized undefined, and we loop over the whole storage, and see if we find any food, if we find any food whose name mathes, we wil store 'foundFood', which we can use later on 
         for ( let i = 0; i < this.#storage.length; i++ ){
-            if (nameOfFood === this.#storage[i].getName()){
-                foundFood = this.#storage[i];
+            if (nameOfFood === this.#storage[i].getName()){//to accesee the specified element, if the name matches
+                foundFood = this.#storage[i];//the object this.objece[i] defines 'foundFood', a referrence
 
-                foundFood.decreaseAmount();
-
-                if (foundFood.getAmount() === 0){
-                    this.#storage.splice(i , 1); //// Remove the foundFood from storage
-                }
+                
     
                 break; // breake statement will stop the for loop execution
             }
@@ -81,6 +73,8 @@ class Refrigerator{
         // 2. consume the food
         // if we find food, then we can consume it  
         // ❓ then how to consume it
+
+        foundFood.eatOne();
 
         console.log(`Slurp! One ${foundFood.getName().toLowerCase()} eaten. ${foundFood.getAmount()} remaining`);
     }
