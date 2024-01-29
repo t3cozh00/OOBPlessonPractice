@@ -33,9 +33,7 @@ class Food {
 
     getName(){
         return this.#name;
-    }
-
-    
+    }  
 }
 
 class Refrigerator{
@@ -50,17 +48,39 @@ class Refrigerator{
         this.#storage.push(food);
     }
 
+
+     /*print the contents in the following format:
+    -----------
+    |Apple 2
+    |Banana 3
+    -----------
+   */
+
+    getContents(){
+        console.log(`-----------`);
+        for ( let i = 0; i < this.#storage.length; i ++){
+            //read the current student name
+            console.log(`| ${this.#storage[i].getName
+            ()} ${this.#storage[i].getAmount()}`);
+        }
+        console.log(`-----------`);
+    }
+
+
+
+
     getAndEatFood(nameOfFood : string){
+
         let foundFood : Food | undefined = undefined; // this is the syntax if you want to defined multiple possible data types for a variable
+
+        let indexNumberOfFood : number = -1;
 
         // 1. find food which has the same name as nameOfFood from our storage
         // ⚠️ the idea of the loop: this variable is initialized undefined, and we loop over the whole storage, and see if we find any food, if we find any food whose name mathes, we wil store 'foundFood', which we can use later on 
         for ( let i = 0; i < this.#storage.length; i++ ){
             if (nameOfFood === this.#storage[i].getName()){//to accesee the specified element, if the name matches
                 foundFood = this.#storage[i];//the object this.objece[i] defines 'foundFood', a referrence
-
-                
-    
+                indexNumberOfFood = i;
                 break; // breake statement will stop the for loop execution
             }
         }
@@ -74,27 +94,21 @@ class Refrigerator{
         // if we find food, then we can consume it  
         // ❓ then how to consume it
 
-        foundFood.eatOne();
+        //check if the amount of this food is 0
 
-        console.log(`Slurp! One ${foundFood.getName().toLowerCase()} eaten. ${foundFood.getAmount()} remaining`);
-    }
+        if ( foundFood.getAmount() > 0){
+             foundFood.eatOne();
+        } 
 
-    /*print the contents in the following format:
-    -----------
-    |Apple 2
-    |Banana 3
-    -----------
-   */
-    getContents(){
-        console.log(`-----------`);
-        for ( let i = 0; i < this.#storage.length; i ++){
-            //read the current student name
-            console.log(`| ${this.#storage[i].getName
-            ()} ${this.#storage[i].getAmount()}`);
+        if ( foundFood.getAmount() === 0){
+            // remove the food
+            //this.#storage.splice(this.#storage.indexOf(foundFood),1);//need to know the index number of foundFood
+            this.#storage.splice(indexNumberOfFood, 1);
+            //console.log(`Sorry, no such food in this refrigerator!`);
         }
-        console.log(`-----------`);
+        
     }
-
+   
 }
 
 
@@ -104,13 +118,13 @@ let apple = new Food('Apple', 2);
 
 let bananas = new Food('Banana', 3);
 
-let grapes = new Food('Grape', 10);
+//let grapes = new Food('Grape', 10);
 
 r.putFood(apple);
 
 r.putFood(bananas);
 
-r.putFood(grapes);
+//r.putFood(grapes);
 
 r.getContents();
 
@@ -121,5 +135,8 @@ r.getAndEatFood('Apple');
 r.getAndEatFood('Banana');
 
 r.getAndEatFood('Apple');
+
+//r.getAndEatFood('Banana');
+
 
 r.getContents();
