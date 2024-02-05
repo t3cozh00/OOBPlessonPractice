@@ -1,5 +1,5 @@
 /*
-   Exercise 4 (objects/exercises/4-classes.js): Create a class for Food which allows the user to set the type of food and quantity. The class should have a method, which can be used to eat the food and quantity will decrease accordingly and a method to be able to describe what type of food it is.
+   (2_JS)Exercise 4 (objects/exercises/4-classes.js): Create a class for Food which allows the user to set the type of food and quantity. The class should have a method, which can be used to eat the food and quantity will decrease accordingly and a method to be able to describe what type of food it is.
 */
 
 class Food {

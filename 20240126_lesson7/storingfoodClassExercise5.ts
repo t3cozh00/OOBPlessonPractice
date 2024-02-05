@@ -1,5 +1,5 @@
 /*
-  Exercise 5: Create a class for Refrigerator which is capable of storing food. 
+  (2_JS)Exercise 5: Create a class for Refrigerator which is capable of storing food. 
   The class should have couple of different methods.
   · putFood – stores food in refrigerator
   · getAndEatFood – gets and consumes the specified food and amount from refrigerator, 
