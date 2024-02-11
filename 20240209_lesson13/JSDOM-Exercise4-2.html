@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <style>
+      .productCard {
+        display: flex;
+      }
+      .productCard img {
+        width: 200px;
+      }
+
+      .productInfo {
+        padding-left: 40px;
+      }
+
+      .productInfo h2 {
+        font-size: 18px;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="exercise4_task1()">
+      Show all products with Create Element
+    </button>
+    <button onclick="exercise4_task2()">
+      Show all products with Inner HTML
+    </button>
+
+    <!-- Here is the HTML structure for implementation target
+
+    <div class="productList">
+      <div class="productCard">
+        <img src="images/eos-90d.jpg">
+        <div class="productInfo">
+          <h1>EOS 90D</h1>
+          <h2>
+            32.5 megapixels, 10 frames per second
+          </h2>
+          <h2>
+            4K video, 1300 frames per battery, ISO 25600
+          </h2>
+        </div>
+      </div>
+    </div>
+    -->
+    <script>
+      const cameraData = [
+        {
+          model: "EOS 850D",
+          image: "images/eos-850d.jpg",
+          highlights: [
+            "24.1 megapixels",
+            "10 frames per second",
+            "4K video",
+            "45 point AF",
+            "Digic 8",
+          ],
+        },
+        {
+          model: "EOS 90D",
+          image: "images/eos-90d.jpg",
+          highlights: [
+            "32.5 megapixels",
+            "10 frames per second",
+            "4K video",
+            "1300 frames per battery",
+            "ISO 25600",
+          ],
+        },
+        {
+          model: "EOS M6 Mark II",
+          image: "images/eos-m6-mark-ii.jpg",
+          highlights: [
+            "32.5 megapixels",
+            "14 frames per second",
+            "408 grams",
+            "1300 frames per battery",
+            "ISO 25600",
+          ],
+        },
+        {
+          model: "Powershot G7 X Mark III",
+          image: "images/powershot-g7-x-mark-iii.jpg",
+          highlights: [
+            "3.5mm microphone input",
+            "120fps FULL HD video",
+            "20.1 megapixels",
+            "Tilt LCD",
+            "24mm - 4.2x Zoom",
+          ],
+        },
+      ];
+
+      /* Your task is to write a solution which takes the above data and
+         creates DOM elements based on the data in the same manner as in previous exercise with single product.
+         All four products should be created when the button with text
+         "Show all products with Create Element" or "... with Inner HTML" is clicked.
+
+         Do two versions of the solution. One with createElement and one with innerHTML.
+        */
+
+      // Your code here
+      function exercise4_task1() {
+        //const body = document.querySelector("body");
+
+        const productListDiv = document.createElement("div");
+        productListDiv.classList.add("productList");
+        //productList.className = "productList";
+
+        for (let i = 0; i < cameraData.length; i++) {
+          // create product card div
+          let productCard = createProductCard(
+            cameraData[i].model,
+            cameraData[i].image,
+            cameraData[i].highlights[0] + ", " + cameraData[i].highlights[1],
+            cameraData[i].highlights[2] +
+              ", " +
+              cameraData[i].highlights[3] +
+              ", " +
+              cameraData[i].highlights[4]
+          );
+
+          // add the product card to the product list
+          productListDiv.appendChild(productCard);
+        }
+        // add the product list to the body
+        document.querySelector("body").appendChild(productListDiv);
+      }
+
+      function createProductCard(
+        productName,
+        productImage,
+        productDescription1,
+        productDescription2
+      ) {
+        const productCardDiv = document.createElement("div");
+        productCardDiv.classList.add("productCard");
+
+        const productImg = document.createElement("img");
+        productImg.src = productImage;
+
+        const productInfoDiv = document.createElement("div");
+        productInfoDiv.classList.add("productInfo");
+
+        const h1ProductTitle = document.createElement("h1");
+        h1ProductTitle.innerText = productName;
+
+        const h2productInfo1 = document.createElement("h2");
+        h2productInfo1.innerText = productDescription1;
+
+        const h2productInfo2 = document.createElement("h2");
+        h2productInfo2.innerText = productDescription2;
+
+        productCardDiv.appendChild(productImg);
+        productCardDiv.appendChild(productInfoDiv);
+        productInfoDiv.appendChild(h1ProductTitle);
+        productInfoDiv.appendChild(h2productInfo1);
+        productInfoDiv.appendChild(h2productInfo2);
+
+        return productCardDiv;
+      }
+    </script>
+  </body>
+</html>

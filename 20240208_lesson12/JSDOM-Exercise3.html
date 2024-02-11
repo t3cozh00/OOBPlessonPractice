@@ -19,7 +19,7 @@
     </style>
   </head>
   <body>
-    <button onclick="task1()">Add product With Create Element</button>
+    <button onclick="exercise3_task1()">Add product With Create Element</button>
     <!-- Here is the HTML structure for implementation target
 
     <div class="productList">
@@ -39,7 +39,7 @@
     -->
     <script>
       // Your code here
-      function task1() {
+      function exercise3_task1() {
         const body = document.querySelector("body");
 
         const productListDiv = document.createElement("div");
@@ -78,8 +78,8 @@
         //   "4K video, 1300 frames per battery, ISO 25600";
 
         productListDiv.appendChild(productCardDiv);
-        productListDiv.appendChild(productInfo);
         productCardDiv.appendChild(img);
+        productCardDiv.appendChild(productInfo);
         productInfo.appendChild(h1ProductTitle);
         productInfo.appendChild(h2productInfo1);
         productInfo.appendChild(h2productInfo2);
