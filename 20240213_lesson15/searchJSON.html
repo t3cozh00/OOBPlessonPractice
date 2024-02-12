@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .productCard {
+        display: flex;
+      }
+      .productCard img {
+        width: 200px;
+      }
+
+      .productInfo {
+        padding-left: 40px;
+      }
+
+      .productInfo h2 {
+        font-size: 18px;
+        font-weight: normal;
+      }
+    </style>
+    <script src="searchJSON.js"></script>
+  </head>
+  <body>
+    <h1>
+      Search Example to send HTTP request to DummyJSON for getting product data
+    </h1>
+    <button onclick="searchProductElements()">Get the products</button>
+    <input type="text" id="search"></input>
+    <div id="productDataTarget"></div>
+  </body>
+</html>
