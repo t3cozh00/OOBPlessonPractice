@@ -29,7 +29,7 @@ function getAndCreateProductElements() {
         productListDiv.appendChild(productCard);
       }
       // add the product list to the body
-      document.querySelector("#productDataTarget").appendChild(productListDiv);
+      document.getElementById("productDataTarget").appendChild(productListDiv);
     });
 }
 
