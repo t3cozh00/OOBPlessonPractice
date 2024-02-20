@@ -22,9 +22,18 @@ const users = [
   },
 ];
 
-const output6 = users.map(function (element, index) {
-  let id = index;
-  element.id = id;
-  return element;
+// const output6 = users.map(function (element, index) {
+//   let id = index;
+//   element.id = id;
+//   return element;
+// });
+// console.log(output6);
+
+const output61 = users.map((element, index) => {
+  let newElement = {
+    id: index,
+    ...element,
+  };
+  return newElement;
 });
-console.log(output6);
+console.log(output61);

@@ -16,14 +16,14 @@ const users = [
 
 const ageLimit = 18;
 // it's not a pure function (pure function can not affect outside(ageLimit))
-function checkAge(user) {
+function checkAge(users) {
   return users.age >= ageLimit;
 }
 
-function checkAge(user, ageLimit) {
+function checkAge(users, ageLimit) {
   return users.age >= ageLimit;
 }
 
-checkAge(user[0]);
-checkAge(user[1]);
-checkAge(user[2]);
+checkAge(users[0]);
+checkAge(users[1]);
+checkAge(users[2]);

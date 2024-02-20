@@ -23,9 +23,9 @@ const output = users.map(function (element, index, array) {
   //console.log("index:" + index);
   //console.log(array);
   //console.log(element.age);
-  return element.age;
+  //return element.age;
 });
-console.log(output);
+//console.log(output);
 
 // task2 is to add a new property for every element in the users array,
 // the new property indicates the user is adult or not

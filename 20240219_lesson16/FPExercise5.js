@@ -27,3 +27,13 @@ const output5 = users.map(function (element) {
   return element;
 });
 console.log(output5);
+
+const output51 = users.map((element) => {
+  return {
+    //name: element.name + " Bundy",
+    age: element.age,
+  };
+});
+console.log(output51);
+
+//same with loop
