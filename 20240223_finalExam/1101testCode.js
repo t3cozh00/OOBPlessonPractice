@@ -46,10 +46,13 @@ let sweden = {
   population: 10540886,
   gdpPerCapita: 66209,
   iSO3166Code: "SE",
-  largestCities: {
-    name: "Stockholm",
-    population: 984748,
-  },
+  largestCities: [
+    { name: "Stockholm", population: 1515017 },
+    { name: "Gothenburg", population: 572799 },
+    { name: "Malmö", population: 312012 },
+    { name: "Uppsala", population: 140454 },
+    { name: "Västerås", population: 110877 },
+  ],
 };
 
 let france = {
@@ -60,10 +63,13 @@ let france = {
   population: 68042591,
   gdpPerCapita: 58765,
   iSO3166Code: "FR",
-  largestCities: {
-    name: "Paris",
-    population: 2102650,
-  },
+  largestCities: [
+    { name: "Paris", population: 2140526 },
+    { name: "Marseille", population: 855393 },
+    { name: "Lyon", population: 513275 },
+    { name: "Toulouse", population: 479553 },
+    { name: "Nice", population: 340017 },
+  ],
 };
 
 let china = {
@@ -74,10 +80,13 @@ let china = {
   population: 1411750000,
   gdpPerCapita: 23309,
   iSO3166Code: "CN",
-  largestCities: {
-    name: "Shanghai",
-    population: 26875500,
-  },
+  largestCities: [
+    { name: "Shanghai", population: 24183300 },
+    { name: "Beijing", population: 20794100 },
+    { name: "Chongqing", population: 15376000 },
+    { name: "Tianjin", population: 12938224 },
+    { name: "Guangzhou", population: 12702800 },
+  ],
 };
 
 let arrayOneOfCountries = [belgium, germany, france, sweden, china];
