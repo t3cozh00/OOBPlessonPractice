@@ -1,5 +1,5 @@
 function getAndCreateProductElements() {
-  console.log("getAndCreateProductElements");
+  //console.log("getAndCreateProductElements");
 
   // step 0 add this function to the event listener of the button
 

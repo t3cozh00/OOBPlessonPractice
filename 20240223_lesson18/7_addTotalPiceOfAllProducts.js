@@ -1,8 +1,6 @@
-// see products in the cart
-// some element we can click, then we can go to the cart
-// click "shopping cart", show the shopping cart contents
-// remove all the elements on the screen
-// all the 'uiContent' will be taken away
+// Objective 6 Add total price of the cart visible to shopping cart view.
+// Objective 7 prevent negative quantities in cart products
+
 class ShoppingCart {
   constructor() {
     this.items = [];
@@ -21,7 +19,7 @@ class ShoppingCart {
   }
 
   getTotal() {
-    return this.items.reduce((acc, item) => acc + item.price, 0);
+    return this.items.reduce((acc, item) => acc + item.getTotalPrice(), 0);
   }
 }
 
@@ -64,6 +62,10 @@ class Product {
 
   getTotalPrice() {
     return this.#price * this.#quantity;
+  }
+
+  setQuantity(quantity) {
+    this.#quantity = quantity;
   }
 }
 
@@ -194,7 +196,14 @@ function openShoppingCart() {
 
     itemNameTd.innerText = cartItems[i].name;
     itemPriceTd.innerText = cartItems[i].price;
-    itemQuantityTd.innerText = cartItems[i].quantity;
+    // convert the shopping cart quantity input into number input then quantity is updated
+    //itemQuantityTd.innerText = cartItems[i].quantity;
+    const quantityInput = document.createElement("input");
+    quantityInput.type = "number";
+    quantityInput.value = cartItems[i].quantity;
+    quantityInput.min = 1;
+    itemQuantityTd.appendChild(quantityInput);
+
     itemTotalPriceTd.innerText = cartItems[i].getTotalPrice();
 
     row.appendChild(itemNameTd);
@@ -203,7 +212,82 @@ function openShoppingCart() {
     row.appendChild(itemTotalPriceTd);
 
     tbody.appendChild(row);
+
+    // add event handlers
+    quantityInput.addEventListener("change", function () {
+      console.log("quantity changed");
+      console.log(quantityInput.value);
+      cartItems[i].setQuantity(parseInt(quantityInput.value));
+      console.log(
+        "current total price of item " + cartItems[i].getTotalPrice()
+      );
+      itemTotalPriceTd.innerText = cartItems[i].getTotalPrice();
+
+      // Objective 6 update the total price of the cart
+      const cartTotalDiv = document.querySelector("div#cartTotal");
+      cartTotalDiv.innerText = "Total: " + cart.getTotal() + "€";
+    });
   }
   shoppingCartTable.appendChild(tbody);
   uiContentElement.appendChild(shoppingCartTable);
+
+  // Objective 6 Add total price of the cart visible to shopping cart view.
+  const cartTotalDiv = document.createElement("div");
+  cartTotalDiv.innerText = "Total: " + cart.getTotal() + "€";
+  cartTotalDiv.id = "cartTotal";
+  uiContentElement.appendChild(cartTotalDiv);
+
+  // Objective 7 add button to go back to search view
+  const backButtonDiv = document.createElement("div");
+  backButtonDiv.classList.add("button");
+  backButtonDiv.innerText = "Back to Product Search";
+  backButtonDiv.style.backgroundColor = "#e2e2e2";
+  backButtonDiv.style.marginTop = "40px";
+
+  backButtonDiv.addEventListener("click", function () {
+    uiContentElement.innerHTML = "";
+    createProductSearchView();
+  });
+  uiContentElement.appendChild(backButtonDiv);
+}
+
+/*Create the following html structure
+  <div 
+    onclick="openShoppingCart()"
+    class="button">
+    Open Shopping Cart
+  </div>
+  <h2>Search for products</h2>
+  <input type="text" id="searchQuery"><button onclick="getAndCreateProductElements()">Get the products</button>
+  <div id="productDataTarget"></div>
+ */
+function createProductSearchView() {
+  const openShoppingCartButton = document.createElement("div");
+
+  openShoppingCartButton.classList.add("button");
+  openShoppingCartButton.innerText = "Open Shopping Cart";
+
+  const h2SearchForProducts = document.createElement("h2");
+  h2SearchForProducts.innerText = "Search for products";
+
+  const inputSearchQuery = document.createElement("input");
+  inputSearchQuery.type = "text";
+  inputSearchQuery.id = "search";
+  const buttonGetTheProducts = document.createElement("button");
+
+  buttonGetTheProducts.innerText = "Get the products";
+
+  const productDataTarget = document.createElement("div");
+  productDataTarget.id = "productDataTarget";
+
+  const uiContentElement = document.querySelector("div#uiContent");
+
+  uiContentElement.appendChild(openShoppingCartButton);
+  uiContentElement.appendChild(h2SearchForProducts);
+  uiContentElement.appendChild(inputSearchQuery);
+  uiContentElement.appendChild(buttonGetTheProducts);
+  uiContentElement.appendChild(productDataTarget);
+
+  openShoppingCartButton.onclick = openShoppingCart;
+  buttonGetTheProducts.onclick = getAndCreateProductElements;
 }

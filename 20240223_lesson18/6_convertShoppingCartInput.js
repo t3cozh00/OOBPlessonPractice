@@ -1,7 +1,4 @@
-// what is a shopping cart ?
-// it's a data structure which contains information that which products have been added to the cart
-// a data structure which has methods, to store lots of information, which is an array
-// we can store stuff into the array when we add thing to cart
+// convert the shopping cart quantity input into number input then quantity is updated
 class ShoppingCart {
   constructor() {
     this.items = [];
@@ -63,6 +60,10 @@ class Product {
 
   getTotalPrice() {
     return this.#price * this.#quantity;
+  }
+
+  setQuantity(quantity) {
+    this.#quantity = quantity;
   }
 }
 
@@ -153,4 +154,73 @@ function createProductCard(
   productInfoDiv.appendChild(addToCartButton);
 
   return productCardDiv;
+}
+
+function openShoppingCart() {
+  const uiContentElement = document.querySelector("div#uiContent");
+  uiContentElement.innerHTML = "";
+
+  const shoppingCartTable = document.createElement("table");
+
+  const thead = document.createElement("thead");
+  const theadRow = document.createElement("tr");
+  const itemNameTh = document.createElement("th");
+  const itemPriceTh = document.createElement("th");
+  const itemQuantityTh = document.createElement("th");
+  const itemTotalPriceTh = document.createElement("th");
+
+  itemNameTh.innerText = "Name";
+  itemPriceTh.innerText = "Price";
+  itemQuantityTh.innerText = "Quantity";
+  itemTotalPriceTh.innerText = "Total Price";
+
+  shoppingCartTable.appendChild(thead);
+  thead.appendChild(theadRow);
+  theadRow.appendChild(itemNameTh);
+  theadRow.appendChild(itemPriceTh);
+  theadRow.appendChild(itemQuantityTh);
+  theadRow.appendChild(itemTotalPriceTh);
+
+  const tbody = document.createElement("tbody");
+
+  const cartItems = cart.getItems();
+  for (let i = 0; i < cartItems.length; i++) {
+    const row = document.createElement("tr");
+
+    const itemNameTd = document.createElement("td");
+    const itemPriceTd = document.createElement("td");
+    const itemQuantityTd = document.createElement("td");
+    const itemTotalPriceTd = document.createElement("td");
+
+    itemNameTd.innerText = cartItems[i].name;
+    itemPriceTd.innerText = cartItems[i].price;
+    // convert the shopping cart quantity input into number input then quantity is updated
+    //itemQuantityTd.innerText = cartItems[i].quantity;
+    const quantityInput = document.createElement("input");
+    quantityInput.type = "number";
+    quantityInput.value = cartItems[i].quantity;
+    itemQuantityTd.appendChild(quantityInput);
+
+    itemTotalPriceTd.innerText = cartItems[i].getTotalPrice();
+
+    row.appendChild(itemNameTd);
+    row.appendChild(itemPriceTd);
+    row.appendChild(itemQuantityTd);
+    row.appendChild(itemTotalPriceTd);
+
+    tbody.appendChild(row);
+
+    // add event handlers
+    quantityInput.addEventListener("change", function () {
+      console.log("quantity changed");
+      console.log(quantityInput.value);
+      cartItems[i].setQuantity(parseInt(quantityInput.value));
+      console.log(
+        "current total price of item " + cartItems[i].getTotalPrice()
+      );
+      itemTotalPriceTd.innerText = cartItems[i].getTotalPrice();
+    });
+  }
+  shoppingCartTable.appendChild(tbody);
+  uiContentElement.appendChild(shoppingCartTable);
 }

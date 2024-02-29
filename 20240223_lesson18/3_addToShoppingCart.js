@@ -1,14 +1,22 @@
 function getAndCreateProductElements() {
-  console.log("getAndCreateProductElements");
+  //console.log("getAndCreateProductElements");
 
-  //read the searchQuery
-  let searchQuery = document.querySelector("#search").value;
+  //step0 read the searchQuery
+  let searchQuery = document.querySelector("input#search").value;
   console.log(searchQuery);
+  // step1 send fetch request to dummyJSON
   fetch("https://dummyjson.com/products/search?q=" + searchQuery)
     // step2 receive the response and convert it to JSON
     .then((response) => response.json())
     .then((responseData) => {
-      console.log(responseData);
+      // step3 clear the search results
+      const productDataTarget = document.querySelector("div#productDataTarget");
+      // set productDataTarget element to empty
+      // option1: productDataTarget.innerHTML = "";
+      // option2:
+      if (productDataTarget.firstChild) {
+        productDataTarget.removeChild(productDataTarget.firstChild);
+      }
 
       const productListDiv = document.createElement("div");
       productListDiv.classList.add("productList");
@@ -53,11 +61,18 @@ function createProductCard(
   const h2productInfo2 = document.createElement("h2");
   h2productInfo2.innerText = productDescription2;
 
+  const addToCartButton = document.createElement("button");
+  addToCartButton.innerText = "Add to Cart";
+  addToCartButton.addEventListener("click", function () {
+    console.log("Add to cart:" + productName);
+  });
+
   productCardDiv.appendChild(productImg);
   productCardDiv.appendChild(productInfoDiv);
   productInfoDiv.appendChild(h1ProductTitle);
   productInfoDiv.appendChild(h2productInfo1);
   productInfoDiv.appendChild(h2productInfo2);
+  productInfoDiv.appendChild(addToCartButton);
 
   return productCardDiv;
 }

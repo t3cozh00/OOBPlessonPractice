@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .productCard {
+        display: flex;
+      }
+      .productCard img {
+        width: 200px;
+      }
+
+      .productInfo {
+        padding-left: 40px;
+      }
+
+      .productInfo h2 {
+        font-size: 18px;
+        font-weight: normal;
+      }
+
+      .button {
+        border: 1px solid black;
+        background-color: lightgreen;
+        font-size: 16;
+        padding: 20px;
+        display: inline-block;
+        cursor: pointer;
+      }
+    </style>
+    <script src="7_addTotalPiceOfAllProducts.js"></script>
+  </head>
+  <!-- execute a js immediately after a page has been loaded -->
+  <body onload="createProductSearchView()">
+    <h1>
+      Fetch Example to send HTTP request to DummyJSON for getting product data
+    </h1>
+    <div id="uiContent"></div>
+  </body>
+</html>
