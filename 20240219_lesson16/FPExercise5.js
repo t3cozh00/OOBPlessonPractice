@@ -30,7 +30,7 @@ console.log(output5);
 
 const output51 = users.map((element) => {
   return {
-    //name: element.name + " Bundy",
+    name: element.name + " Bundy",
     age: element.age,
   };
 });

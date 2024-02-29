@@ -8,6 +8,7 @@ function pureSplice2(inputArr, startingIndex, deleteCount) {
   // copy the inputArray（创建 inputArr 的一个副本 outputArr）
   let outputArr = [...inputArr];
   // return the original splice on the copied array
+  // if directly execute .splice on the inputArray, the inputArray will be modified
   outputArr.splice(startingIndex, deleteCount);
   return outputArr;
 }

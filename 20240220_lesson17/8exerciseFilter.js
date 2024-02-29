@@ -7,4 +7,4 @@ const meteorites = require("./meteoriteDataSet.json");
 function getMeteoriteWithMass(dataBase, mass) {
   return dataBase.filter((element) => element.mass < mass);
 }
-console.log(getMeteoriteWithMass(meteorites, 5));
+console.log(getMeteoriteWithMass(meteorites, 1));
