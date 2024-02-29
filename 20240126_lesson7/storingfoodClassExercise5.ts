@@ -104,7 +104,7 @@ class Refrigerator {
     |Apple 2
     |Banana 3
     -----------
-   */
+  */
   getContents() {
     console.log(`-----------`);
     for (let i = 0; i < this.#storage.length; i++) {

@@ -40,6 +40,7 @@ FastCar.prototype.increaseSpeed = function () {
 };
 
 let formula = new FastCar("F1", "Ferrari", "FAST-1");
+
 console.log(formula);
 formula.makeNoise();
 formula.displaySpeed();

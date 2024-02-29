@@ -86,6 +86,6 @@ LabradorPuppy.prototype.cuteBark = function () {
 var puppy = new LabradorPuppy("Vee", "white");
 
 // Test the methods
-puppy.cuteBark();
-puppy.sayName();
-puppy.bark();
+puppy.cuteBark(); // Shoo! I'm Vee
+puppy.sayName(); // My name is Vee
+puppy.bark(); // Woof! I'm a undefined

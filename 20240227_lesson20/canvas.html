@@ -1,0 +1,57 @@
+<html>
+  <head> </head>
+  <body>
+    <h1>Canvas Demo</h1>
+    <script>
+            const canvas = document.getElementById('surface');
+            const
+            const
+            // draw a green rectangle
+
+            // draw a red rectangle
+
+            //
+            // CLASS to create numbers of balls
+      // random color: red, #xxx, rag(x, x, x)
+            class Ball{
+              constructor(x, y, radius, xSpeed, color){}
+              update(){}
+              draw(){}
+
+            }
+
+            const ball1 = new Ball(100, 100, 10);
+            //create 100 balls
+            const ballArray = [];
+            for (let i = 0; i < 100; i++){
+
+            }
+
+
+
+
+
+
+
+            let xCoord = 300;
+            let yCoord = 300;
+
+            function draw() {
+              ctx.clearRect(0, 0, CANVAS_WIDTH, 600);
+
+              ctx.beginPath();
+
+              ctx.arc(xCoord, yCoord);
+
+               window.requestAnimationFrame(draw);
+
+            }
+
+            window.requestAnimationFrame(draw);
+
+            // requestAnimationFrame()
+    </script>
+  </body>
+</html>
+
+/* to use in game(frogger game) */

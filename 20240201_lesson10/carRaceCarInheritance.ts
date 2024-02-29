@@ -1,5 +1,5 @@
 /*
-  8. Inheritance with ES6 Classes
+  (2_JS Objects)8. Inheritance with ES6 Classes
   Inheritance is supported by class syntax with keyword extends.
   In the previous example there was a class Car with some properties and methods. 
   To create a new class which inherits the methods and properties from this class exteds keyword must be used.
@@ -64,7 +64,7 @@ class RaceCar extends Car {
 /* 
    use extends to create other classes of cars, like off-road car..which have 
    different functionality. By using this inheritance, we can avoid writing 
-   duplicate code, make the code easier to understand, less amount of bugs
+   duplicate code, make the code easier to understand, less amount of bugs or changes
    eg. class vehicle, then extends class helicopter, car, train, etc.
 */
 

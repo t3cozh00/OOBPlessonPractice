@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <style>
+      .demo {
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Exercise template for modifying the DOM</h1>
+    <div>
+      <p id="ExampleID" class="demo">Hello world</p>
+      <p class="demo" name="testName">Some content of paragraph</p>
+      <p class="demo" name="testName">Another content of paragraph</p>
+    </div>
+    <div>
+      <b>Task 1</b>
+      Your task is to write code to replace the "Hello world" text above in the
+      paragraph with text "I can modify text". Create a button here below to
+      activate your code when you click on it.
+      <pre>
+      Steps to do this task: 
+      * create a button 
+      * create a click handler(function) for the button 
+      * in the click handler 
+        ** get the element which we want to modify 
+        ** with tha element ready, modify the text content of the element
+      </pre>
+    </div>
+
+    <button onclick="task1ClickHandler();">Click me for task 1</button>
+    <br /><br />
+    <div>
+      <b>Task 2</b>
+      Write code which replaces the children of all divs with text "I have
+      replaced everything".
+
+      <button onclick="task2ClickHandler();">Click to execute task2</button>
+    </div>
+    <br /><br />
+    <div>
+      <b>Task 3</b>
+      Write code, which inserts into a single div containing an image
+      (https://www.w3.org/html/logo/img/html5-display.png) and text "AN HTML5
+      LOGO". That content should be laid out vertically stacked and centered on
+      the page.
+
+      <button onclick="task3ClickHandler()">Click to execute task3</button>
+
+      <div id="imageTarget"></div>
+    </div>
+
+    <script>
+      // Write your javascript code here.
+      function task1ClickHandler() {
+        console.log("task1 clicked");
+        const element = document.querySelector("#ExampleID");
+        if (element) {
+          element.textContent = "I can modify text";
+        }
+      }
+
+      function task2ClickHandler() {
+        const divElement = document.querySelectorAll("div");
+        for (let i = 0; i < divElement.length; i++) {
+          divElement[i].innerText = "I have replaced everything";
+        }
+      }
+
+      function task3ClickHandler() {
+        const targetElement = document.querySelector("#imageTarget");
+        if (targetElement === null) {
+          console.error("Target element not found");
+          return;
+        }
+
+        const div = document.createElement("div");
+
+        const img = document.createElement("img");
+
+        const p = document.createElement("p");
+
+        img.src = "https://www.w3.org/html/logo/img/html5-display.png";
+
+        p.innerText = "AN HTML5 LOGO";
+
+        div.appendChild(img);
+        targetElement.appendChild(div);
+        targetElement.appendChild(p);
+        targetElement.style.display = "flex";
+        targetElement.style.flexDirection = "column";
+        targetElement.style.justifyContent = "center";
+        targetElement.style.alignItems = "center";
+
+        //targetElement.classList.add("targetElement");
+      }
+    </script>
+  </body>
+</html>

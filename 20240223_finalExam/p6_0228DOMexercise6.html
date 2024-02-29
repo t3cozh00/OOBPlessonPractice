@@ -1,0 +1,140 @@
+<html>
+  <head>
+
+
+  </head>
+  <body>
+    <div>
+      <h2>Compound interest</h2>
+      <div>
+      Your task is to create an tool to calculate investment returns with compound interest.
+      The tool should have input fields for
+      •	initial investment
+      •	monthly contribution
+      •	length of time in years
+      •	estimated interest rate in percent
+      As a result the tool should show how your invesment value grows over the years. Use a table for this. Assume interest is added annually.
+      In the result table show the yearly investment value with interest and without interest (total contribution or savings).
+      With initial values of 1000 initial investment, 50 monthly contribution, 20 years time and 5 percent inte the table should have the following values:
+      Years	Investment Value (5.00%)	Total Contributions
+      Year 0	1,000.00			1,000.00
+      Year 1	1,650.00			1,600.00
+      Year 2	2,332.50			2,200.00
+      Year 3	3,049.13			2,800.00
+      Year 4	3,801.58			3,400.00
+      Year 5	4,591.66			4,000.00
+      Year 6	5,421.24			4,600.00
+      Year 7	6,292.31			5,200.00
+      Year 8	7,206.92			5,800.00
+      Year 9	8,167.27			6,400.00
+      Year 10	9,175.63			7,000.00
+      Year 11	10,234.41			7,600.00
+      Year 12	11,346.13			8,200.00
+      Year 13	12,513.44			8,800.00
+      Year 14	13,739.11			9,400.00
+      Year 15	15,026.07			10,000.00
+      Year 16	16,377.37			10,600.00
+      Year 17	17,796.24			11,200.00
+      Year 18	19,286.05			11,800.00
+      Year 19	20,850.35			12,400.00
+
+      </div>
+      <div>
+        <div>
+          Initial investment <input type="number" id="initial">
+        </div>
+        <div>
+          Monthly contributionElement <input type="number" id="monthlySavings">
+        </div>
+        <div>
+          Investment time in years<input type="number" id="years">
+        </div>
+        <div>
+          Estimated interest in percent <input type="number" id="interest">
+        </div>
+        <button onclick="calculate()">Calculate</button>
+      </div>
+      <div >
+        <table id="target">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Investment Value</th>
+              <th>Total contributions</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        <table>
+      </div>
+
+
+    <script>
+        // create a function named calculate to perform the investment and savings calculation and update table
+      function calculate() {
+        // Your code here
+        // using document.querSelector() to retrieve the values from input element, fetching initial investment amount, monthly saving amount, invest time, and annual interest.
+        // use parseIn() to parses string argument and return an integer for further calculation
+        const initialInvestment = parseInt(document.querySelector('#initial').value);
+        const monthlySavings = parseInt(document.querySelector('#monthlySavings').value);
+        const investmentTime = parseInt(document.querySelector('#years').value);
+        let interest = parseInt(document.querySelector('#interest').value);
+
+        // convert the input annual interset into percentage format
+        interest = 1 + interest/100;
+
+        // define variables to track the changes of investment amount and saving amount
+        let sumInvestmentValue = initialInvestment;
+        let sumSavingsValue = initialInvestment;
+
+        // (new Date()).getFullYear() to get the current year
+        let initialYear = (new Date()).getFullYear();
+
+        // document.querySelector('table#target > tbody') to get the tbody element of the table
+        const tbodyElement = document.querySelector('table#target > tbody');
+
+        // use while loop to clear all existing rows
+        // when tbodyElement.firstChild is true, which means there is a child element of the tbody element, then remove it, finally to clear the table
+        while (tbodyElement.firstChild) {
+          tbodyElement.removeChild(tbodyElement.firstChild);
+        }
+
+        // create new rows
+        // use for loop to create new rows, each row represent an investment year
+        
+        for(let i=0; i<investmentTime; i++) {
+          let row = document.createElement('tr');
+
+          // in each row, create cells for year, investment value, contribution value
+          let yearElement = document.createElement('td');
+          let investmentElement = document.createElement('td');
+          let contributionElement = document.createElement('td');
+
+          // initialYear + i calculates the year for each iteration of the loop, and adds this calculated year to the yearElement
+          yearElement.append(initialYear+i);
+
+          // calculates the total savings value by adding the product of monthlySavings and 12 to the current sumSavingsValue
+          sumSavingsValue += monthlySavings*12;
+
+          // appends the formatted sumSavingsValue to the contributionElement
+          // toFixed(2) to format the number with two decimal places 
+          contributionElement.append(sumSavingsValue.toFixed(2))
+
+          // calculates the new investment value by multiplying the total annual saving (calculated in the previous step) by the interest rate.
+          // updates the investment value based on the annual contribution and interest earned over the year
+          sumInvestmentValue = (sumInvestmentValue + 12*monthlySavings) * interest;
+          investmentElement.append(sumInvestmentValue.toFixed(2));
+
+          // append the cells to the row
+          row.appendChild(yearElement);
+          row.appendChild(investmentElement);
+          row.appendChild(contributionElement);
+
+          // append the rows to the tbody element, then the table formed
+          tbodyElement.appendChild(row);
+        }
+      }
+      
+    </script>
+  </body>
+</html>
