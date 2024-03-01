@@ -1,13 +1,21 @@
-// Objective 8 Add total item count indicator to the product search view shopping cart button. When user adds a product to cart, the indicator should update and show to the user that the item was added to the cart.
-// 43:49
-
+// Objective 9 add the same product amount in the shopping cart
+// changed in the ShoppingCart
 class ShoppingCart {
   constructor() {
     this.items = [];
   }
 
+  // Objective 9
   addItem(product) {
-    this.items.push(product);
+    // Objective 9 check if the product already exists in the cart
+    const searchResult = this.items.find((item) => item.id === product.id);
+    // Objective 9 if yes, increase the quantity
+    if (searchResult !== undefined) {
+      searchResult.increaseQuantity();
+      // Objective 9 if no, add to cart
+    } else {
+      this.items.push(product);
+    }
   }
   // filter the items array and keep those elements that are not equal to product
   removeItem(product) {
@@ -19,6 +27,7 @@ class ShoppingCart {
   }
 
   getTotal() {
+    // reduce method: loop the array, and convert the array to a single value
     return this.items.reduce((acc, item) => acc + item.getTotalPrice(), 0);
   }
 
@@ -310,3 +319,11 @@ function createProductSearchView() {
   openShoppingCartButton.onclick = openShoppingCart;
   buttonGetTheProducts.onclick = getAndCreateProductElements;
 }
+
+// React: library for creating exactly this kind of user interface code
+//         user interface implementation which is connected to data
+// Angular JS: the web development framework for building the future
+// Vue.js: the progressive JavaScript Framework
+
+// rarely don't write the above code in real life for bigger applications
+// usually use those libraries, to manage the different kinds of components, different views and organizations how the data flows and how it's synchronize between all those components
